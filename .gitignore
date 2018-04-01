@@ -1,8 +1,0 @@
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
-.idea/
-TestUtil.iml
-lib/
-pom.xml
-target/
-src/
