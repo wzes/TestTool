@@ -39,12 +39,6 @@ public class TestView extends JFrame {
         classFileField.setText("please select .java file");
         panel.add(classFileField);
 
-        // select class
-//        JTextField methodFileField = new JTextField(20);
-//        methodFileField.setBounds(20,150,265,30);
-//        methodFileField.setText("please select method tested");
-//        panel.add(methodFileField);
-
 
         JTextArea dataArea = new JTextArea();
         dataArea.setBorder(BorderFactory.createEtchedBorder());
@@ -55,42 +49,36 @@ public class TestView extends JFrame {
         JComboBox comboBox = new JComboBox();
         comboBox.setBounds(20, 80, 280, 30);
         panel.add(comboBox);
-        comboBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange()==ItemEvent.SELECTED) {
-                    System.out.println(e.getItem());
-                    methodIndex = getMethodIndex(e.getItem().toString());
-                }
+        comboBox.addItemListener(e -> {
+            if (e.getStateChange()==ItemEvent.SELECTED) {
+                System.out.println(e.getItem());
+                methodIndex = getMethodIndex(e.getItem().toString());
             }
         });
 
 
         JButton classSelectButton = new JButton("select");
         classSelectButton.setBounds(220, 20, 80, 30);
-        classSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser jfc = new JFileChooser();
-                jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                jfc.showDialog(new JLabel(), "select");
-                String filePath = jfc.getSelectedFile().getAbsolutePath();
+        classSelectButton.addActionListener(e -> {
+            JFileChooser jfc = new JFileChooser();
+            jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            jfc.showDialog(new JLabel(), "select");
+            String filePath = jfc.getSelectedFile().getAbsolutePath();
 
-                if (!filePath.contains(".java")) {
-                    System.out.println("file type error");
-                    return;
-                }
-                classFileField.setText(jfc.getSelectedFile().getName());
-
-                setCsvFilename(filePath);
-                System.out.println(filePath);
-
-                // error
-                comboBox.setModel(new DefaultComboBoxModel<>(getMethods()));
-
-                comboBox.updateUI();
-
+            if (!filePath.contains(".java")) {
+                System.out.println("file type error");
+                return;
             }
+            classFileField.setText(jfc.getSelectedFile().getName());
+
+            setCsvFilename(filePath);
+            System.out.println(filePath);
+
+            // error
+            comboBox.setModel(new DefaultComboBoxModel<>(getMethods()));
+
+            comboBox.updateUI();
+
         });
 
         panel.add(classSelectButton);
@@ -105,22 +93,19 @@ public class TestView extends JFrame {
         JButton dataSelectButton = new JButton("select");
         dataSelectButton.setBounds(220, 140, 80, 30);
 
-        dataSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser jfc = new JFileChooser();
-                jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                jfc.showDialog(new JLabel(), "select");
-                String filePath = jfc.getSelectedFile().getAbsolutePath();
+        dataSelectButton.addActionListener(e -> {
+            JFileChooser jfc = new JFileChooser();
+            jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            jfc.showDialog(new JLabel(), "select");
+            String filePath = jfc.getSelectedFile().getAbsolutePath();
 
-                if (!filePath.contains(".csv")) {
-                    System.out.println("file type error");
-                    return;
-                }
-                setData(filePath);
-                dataFileField.setText(jfc.getSelectedFile().getName());
-                dataArea.setText(classHelper.getDataText(methodIndex));
+            if (!filePath.contains(".csv")) {
+                System.out.println("file type error");
+                return;
             }
+            setData(filePath);
+            dataFileField.setText(jfc.getSelectedFile().getName());
+            dataArea.setText(classHelper.getDataText(methodIndex));
         });
         panel.add(dataSelectButton);
 
@@ -133,38 +118,35 @@ public class TestView extends JFrame {
 
         JButton startButton = new JButton("start");
         startButton.setBounds(320, 20, 660, 30);
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List<ItemResult> itemResults = classHelper.executeByCsv(methodIndex);
-                StringBuilder sb = new StringBuilder();
-                sb.append("input\t\t").append("actual\t\t").append("expected\t\t").append("pass").append("\n");
-                for (ItemResult itemResult : itemResults) {
-                    sb.append(itemResult.getInput())
-                            .append("\t\t")
-                            .append(itemResult.getActual())
-                            .append("\t\t")
-                            .append(itemResult.getExpected())
-                            .append("\t\t")
-                            .append(itemResult.isCorrect())
-                            .append("\n");
-                }
-                TotalResult evaluate = classHelper.evaluate(itemResults);
-                sb.append("test sample count: ")
-                        .append(evaluate.getItemCount())
-                        .append("\t")
-                        .append("correct count: ")
-                        .append(evaluate.getCorrectCount())
-                        .append("\t")
-                        .append("wrong count: ")
-                        .append(evaluate.getWrongCount())
-                        .append("\t")
-                        .append("correct rate: ")
-                        .append(evaluate.getCorrectRate());
-
-                textArea.setText(sb.toString());
-                textArea.updateUI();
+        startButton.addActionListener(e -> {
+            List<ItemResult> itemResults = classHelper.executeByCsv(methodIndex);
+            StringBuilder sb = new StringBuilder();
+            sb.append("input\t\t").append("actual\t\t").append("expected\t\t").append("pass").append("\n");
+            for (ItemResult itemResult : itemResults) {
+                sb.append(itemResult.getInput())
+                        .append("\t\t")
+                        .append(itemResult.getActual())
+                        .append("\t\t")
+                        .append(itemResult.getExpected())
+                        .append("\t\t")
+                        .append(itemResult.isCorrect())
+                        .append("\n");
             }
+            TotalResult evaluate = classHelper.evaluate(itemResults);
+            sb.append("test sample count: ")
+                    .append(evaluate.getItemCount())
+                    .append("\t")
+                    .append("correct count: ")
+                    .append(evaluate.getCorrectCount())
+                    .append("\t")
+                    .append("wrong count: ")
+                    .append(evaluate.getWrongCount())
+                    .append("\t")
+                    .append("correct rate: ")
+                    .append(evaluate.getCorrectRate());
+
+            textArea.setText(sb.toString());
+            textArea.updateUI();
         });
 
         panel.add(startButton);
