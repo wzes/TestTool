@@ -4,7 +4,7 @@ import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
-import java.io.File;
+import java.io.*;
 import java.util.Arrays;
 
 /**
@@ -42,5 +42,33 @@ public class JavaCompilerUtils {
 
         return getJavaCompiler().getTask(null, fileManager, null, options,
                 null, compilationUnits).call();
+    }
+
+    public static String getPackageName(String sourceFileInputPath){
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFileInputPath)));
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains("package")) {
+                    return line.replace(" ", "").replace(".", "/")
+                            .replace("\n", "")
+                            .replace(";", "").replace("package", "");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getClassName (String sourceFileInputPath) {
+        String packageName = getPackageName(sourceFileInputPath);
+        int index = sourceFileInputPath.lastIndexOf("/");
+        if (index != -1) {
+            return packageName.replace("/", ".") + "." +
+                    sourceFileInputPath.substring(index + 1).replace(".java", "");
+        }
+        return packageName.replace("/", ".") + "." + sourceFileInputPath.replace(".java", "");
     }
 }
