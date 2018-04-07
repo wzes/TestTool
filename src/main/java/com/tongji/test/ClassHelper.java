@@ -205,6 +205,15 @@ public class ClassHelper {
 
     /**
      *
+     * @param methodIndex
+     * @return
+     */
+    public String getDataText(int methodIndex) {
+        return FileUtils.getText(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex)));
+    }
+
+    /**
+     *
      * @param itemResults
      * @return
      */

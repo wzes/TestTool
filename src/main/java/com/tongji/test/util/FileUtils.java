@@ -133,6 +133,18 @@ public class FileUtils {
         return testData;
     }
 
+    public static String getText(String filename, Class<?>[] paramCls) {
+        List<TestData> testDataFromFile = getTestDataFromFile(filename, paramCls);
+        StringBuilder sb = new StringBuilder();
+        sb.append("input\t").append("legal").append("\n");
+        for (TestData testData : testDataFromFile) {
+            sb.append(testData.getLine()).append("\t")
+                    .append(testData.isLegal())
+            .append("\n");
+        }
+        return sb.toString();
+    }
+
     /**
      *
      * @param filename
