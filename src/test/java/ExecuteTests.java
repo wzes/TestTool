@@ -1,7 +1,9 @@
 import com.alibaba.fastjson.JSON;
 import com.tongji.test.model.ItemResult;
+import com.tongji.test.model.TestData;
 import com.tongji.test.model.TotalResult;
 import com.tongji.test.util.FileUtils;
+import com.tongji.test.util.StatisticUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import com.tongji.test.ClassHelper;
@@ -26,6 +28,14 @@ public class ExecuteTests {
         classHelper.setCsvFilename(filename);
         Object[][] objects;
         try {
+
+            List<TestData> testData = FileUtils.getTestData(filename, paramAndReturnCls);
+
+            double quality = StatisticUtils.evaluateData(testData);
+
+            System.out.println("The quality of data is " + quality * 100 + "%");
+            System.out.println("--------------------------------");
+
             objects = FileUtils.readCsv(filename, paramAndReturnCls);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage() +

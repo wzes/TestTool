@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e49f428-d049-431f-90f7-7cc242ae08fb" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_39.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data/test.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/model/ItemResult.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/model/TotalResult.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/TestUtil.iml" afterPath="$PROJECT_DIR$/TestUtil.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/TestClass.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/TestClass.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/model/TestData.java" />
+      <change beforePath="$PROJECT_DIR$/data/test.csv" afterPath="$PROJECT_DIR$/data/test.csv" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/model/DataQuality.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/model/DataQuality.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ExecuteTests.java" afterPath="$PROJECT_DIR$/src/test/java/ExecuteTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,12 +20,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-115">
-              <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="414">
+              <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1967#1977#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/model/TestData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding>
+                <element signature="e#222#223#0" expanded="true" />
+                <element signature="e#262#263#0" expanded="true" />
+                <element signature="e#294#295#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#354#355#0" expanded="true" />
+                <element signature="e#397#398#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataQuality.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/model/DataQuality.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="874">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#288#289#0" expanded="true" />
+                <element signature="e#365#366#0" expanded="true" />
+                <element signature="e#396#397#0" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,34 +74,6 @@
             <state relative-caret-position="241">
               <caret line="614" column="20" lean-forward="false" selection-start-line="614" selection-start-column="20" selection-end-line="614" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IllegalArgumentException.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///opt/jdk1.8.0_144/src.zip!/java/lang/IllegalArgumentException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="51" column="11" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-              <folding>
-                <element signature="e#592#593#0" expanded="true" />
-                <element signature="e#615#616#0" expanded="true" />
-                <element signature="e#828#829#0" expanded="true" />
-                <element signature="e#852#853#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RuntimeException.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///opt/jdk1.8.0_144/src.zip!/java/lang/RuntimeException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
-              <folding>
-                <element signature="e#1598#1599#0" expanded="true" />
-                <element signature="e#1628#1629#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -100,12 +104,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.csv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/test.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
-              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatisticUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="558">
+              <caret line="40" column="35" lean-forward="false" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,8 +129,8 @@
       <file leaf-file-name="ClassHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-161">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="347">
+              <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#637#638#0" expanded="true" />
@@ -141,30 +157,10 @@
       <file leaf-file-name="ExecuteTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ExecuteTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="199">
+              <caret line="36" column="67" lean-forward="false" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/TestClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-              <folding>
-                <element signature="e#178#179#0" expanded="true" />
-                <element signature="e#205#206#0" expanded="true" />
-                <element signature="e#245#246#0" expanded="true" />
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#308#309#0" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-                <element signature="e#368#369#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="e#481#482#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -201,15 +197,17 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/model/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/StatisticUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/model/TotalResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/model/ItemResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/TestClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/model/TestData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/model/DataQuality.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/ExecuteTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
         <option value="$PROJECT_DIR$/data/test.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
       </list>
     </option>
   </component>
@@ -321,6 +319,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TestUtil" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TestUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TestUtil" type="b2602c69:ProjectViewProjectNode" />
@@ -561,44 +568,44 @@
       <workItem from="1522563212576" duration="5648000" />
       <workItem from="1522637699180" duration="40000" />
       <workItem from="1522682870435" duration="696000" />
-      <workItem from="1523077286735" duration="7876000" />
+      <workItem from="1523077286735" duration="9701000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 06m 14s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 44s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 07m 08s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 29m 15s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 07m 15s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 34m 38s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 07m 22s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 34m 49s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 09m 32s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 34m 56s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 10s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 35m 41s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 19s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 36m 13s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 25s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 36m 38s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 28s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 37m 14s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 12m 38s.xml">
+    <history-entry file="ExecuteTests_ExecuteTest - 2018.04.07 at 15h 39m 02s.xml">
       <configuration name="ExecuteTests.ExecuteTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14398000" />
+    <option name="totallyTimeSpent" value="16223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -615,7 +622,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07486631" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2521834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10043668" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7467249" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21069519" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -651,26 +658,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/CompilerTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ExecuteTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///opt/jdk1.8.0_144/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -971,16 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -999,41 +976,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1604#1612#0" expanded="true" />
-            <element signature="e#2887#2888#0" expanded="true" />
-            <element signature="e#2944#2945#0" expanded="true" />
-            <element signature="e#3420#3432#0" expanded="true" />
-            <element signature="e#4938#4939#0" expanded="true" />
-            <element signature="e#4997#4998#0" expanded="true" />
-            <element signature="e#5712#5713#0" expanded="true" />
-            <element signature="e#5752#5753#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///opt/jdk1.8.0_144/src.zip!/java/lang/IllegalArgumentException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="51" column="11" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
           <folding>
-            <element signature="e#592#593#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="false" />
+            <element signature="e#615#616#0" expanded="false" />
+            <element signature="e#828#829#0" expanded="false" />
+            <element signature="e#852#853#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1043,8 +994,8 @@
         <state relative-caret-position="232">
           <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
           <folding>
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1628#1629#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="false" />
+            <element signature="e#1628#1629#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1071,16 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ExecuteTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///opt/jdk1.8.0_144/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -1089,19 +1030,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/model/TestData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
-          <folding />
+        <state relative-caret-position="253">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding>
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#262#263#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/model/DataQuality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="40" column="35" lean-forward="false" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ExecuteTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="36" column="67" lean-forward="false" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/test.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1084#1085#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1604#1612#0" expanded="true" />
+            <element signature="e#2887#2888#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+            <element signature="e#3420#3432#0" expanded="true" />
+            <element signature="e#4938#4939#0" expanded="true" />
+            <element signature="e#4997#4998#0" expanded="true" />
+            <element signature="e#5712#5713#0" expanded="true" />
+            <element signature="e#5752#5753#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1967#1977#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

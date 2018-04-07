@@ -1,6 +1,8 @@
 package com.tongji.test.util;
 
+import com.tongji.test.model.DataQuality;
 import com.tongji.test.model.ItemResult;
+import com.tongji.test.model.TestData;
 import com.tongji.test.model.TotalResult;
 
 import java.util.List;
@@ -32,5 +34,10 @@ public class StatisticUtils {
         result.setWrongCount(itemResults.size() - correctCount);
         result.setCorrectRate((double) correctCount / itemResults.size());
         return result;
+    }
+
+    public static double evaluateData(List<TestData> testData) {
+        DataQuality dataQuality = new DataQuality(testData);
+        return dataQuality.getLegalRate();
     }
 }
