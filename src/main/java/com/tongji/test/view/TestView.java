@@ -8,7 +8,10 @@ import com.tongji.test.util.JavaCompilerUtils;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
 import javax.swing.text.BadLocationException;
+import java.awt.*;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.InputMethodListener;
 import java.awt.event.ItemEvent;
@@ -48,7 +51,7 @@ public class TestView extends JFrame {
         JTextArea dataArea = new JTextArea();
         dataArea.setBorder(BorderFactory.createEtchedBorder());
         dataArea.setBounds(20, 200, 280, 250);
-
+        dataArea.setFont(new Font(null, 0, 15));
         dataArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -140,12 +143,19 @@ public class TestView extends JFrame {
         });
         panel.add(dataSelectButton);
 
-
+//
         JTextArea textArea = new JTextArea();
+        textArea.setFont(new Font(null, 0, 18));
         textArea.setBorder(BorderFactory.createEtchedBorder());
-        textArea.setBounds(320, 70, 660, 380);
+        textArea.setBounds(320, 415, 660, 35);
 
         panel.add(textArea);
+
+        String[] columnNames = { "Input Data", "Actual", "Expected", "Is Pass" };
+        final JTable table = new JTable(new Object[0][0], columnNames);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(320, 70, 660, 325);
+        panel.add(scrollPane);
 
         JButton startButton = new JButton("start");
         startButton.setBounds(320, 20, 660, 30);
@@ -157,32 +167,87 @@ public class TestView extends JFrame {
                 itemResults = classHelper.executeByInput(methodIndex);
             }
             StringBuilder sb = new StringBuilder();
-            sb.append("input\t\t").append("actual\t\t").append("expected\t\t").append("pass").append("\n");
-            for (ItemResult itemResult : itemResults) {
-                sb.append(itemResult.getInput())
-                        .append("\t\t")
-                        .append(itemResult.getActual())
-                        .append("\t\t")
-                        .append(itemResult.getExpected())
-                        .append("\t\t")
-                        .append(itemResult.isCorrect())
-                        .append("\n");
-            }
+
             TotalResult evaluate = classHelper.evaluate(itemResults);
-            sb.append("test sample count: ")
+            sb.append("Test sample count: ")
                     .append(evaluate.getItemCount())
-                    .append("\t")
-                    .append("correct count: ")
+                    .append(" ")
+                    .append("correct: ")
                     .append(evaluate.getCorrectCount())
-                    .append("\t")
-                    .append("wrong count: ")
+                    .append(" ")
+                    .append("wrong: ")
                     .append(evaluate.getWrongCount())
-                    .append("\t")
-                    .append("correct rate: ")
-                    .append(evaluate.getCorrectRate());
+                    .append(" ")
+                    .append("correct rate: ");
+            double rate = evaluate.getCorrectRate() * 100;
+
+            if (String.valueOf(rate).length() > 4) {
+                sb.append(String.valueOf(rate).substring(0,  5)).append("%");
+            } else {
+                sb.append(String.valueOf(rate)).append("%");
+            }
 
             textArea.setText(sb.toString());
             textArea.updateUI();
+
+
+            Object[][] data = new Object[itemResults.size()][4];
+
+            for (int i = 0; i < itemResults.size(); i++) {
+                data[i][0] = itemResults.get(i).getInput();
+                data[i][1] = itemResults.get(i).getActual();
+                data[i][2] = itemResults.get(i).getExpected();
+                data[i][3] = itemResults.get(i).isCorrect();
+            }
+
+
+            table.setModel(new TableModel() {
+                @Override
+                public int getRowCount() {
+                    return data.length;
+                }
+
+                @Override
+                public int getColumnCount() {
+                    return 4;
+                }
+
+                @Override
+                public String getColumnName(int columnIndex) {
+                    return columnNames[columnIndex].toString();
+                }
+
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+                    return columnNames[columnIndex].getClass();
+                }
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                }
+
+                @Override
+                public Object getValueAt(int rowIndex, int columnIndex) {
+                    return data[rowIndex][columnIndex];
+                }
+
+                @Override
+                public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+
+                }
+
+                @Override
+                public void addTableModelListener(TableModelListener l) {
+
+                }
+
+                @Override
+                public void removeTableModelListener(TableModelListener l) {
+
+                }
+            });
+            panel.updateUI();
         });
 
         panel.add(startButton);
