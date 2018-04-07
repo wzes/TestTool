@@ -18,4 +18,13 @@ public class TestClass {
     public int print(int i) {
         return i;
     }
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
