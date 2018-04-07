@@ -4,7 +4,6 @@ import com.tongji.test.model.TestData;
 import com.tongji.test.model.TotalResult;
 import com.tongji.test.util.FileUtils;
 import com.tongji.test.util.StatisticUtils;
-import org.junit.Assert;
 import org.junit.Test;
 import com.tongji.test.ClassHelper;
 
@@ -29,7 +28,7 @@ public class ExecuteTests {
         Object[][] objects;
         try {
 
-            List<TestData> testData = FileUtils.getTestData(filename, paramAndReturnCls);
+            List<TestData> testData = FileUtils.getTestDataFromFile(filename, paramAndReturnCls);
 
             double quality = StatisticUtils.evaluateData(testData);
 
@@ -57,7 +56,7 @@ public class ExecuteTests {
          * item list result
          */
 
-        List<ItemResult> resultList = classHelper.execute("add");
+        List<ItemResult> resultList = classHelper.executeByCsv("add");
 
         System.out.println(JSON.toJSONString(resultList));
 

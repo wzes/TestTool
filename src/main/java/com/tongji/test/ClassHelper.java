@@ -23,6 +23,15 @@ public class ClassHelper {
     private List<Method> mMethods;
 
     private String csvFilename;
+    private String systemInput;
+
+    public String getSystemInput() {
+        return systemInput;
+    }
+
+    public void setSystemInput(String systemInput) {
+        this.systemInput = systemInput;
+    }
 
     public String getCsvFilename() {
         return csvFilename;
@@ -99,8 +108,17 @@ public class ClassHelper {
      * @param methodIndex
      * @return
      */
-    public List<ItemResult> execute(int methodIndex) {
-        return execute(mMethods.get(methodIndex));
+    public List<ItemResult> executeByCsv(int methodIndex) {
+        return executeByCsv(mMethods.get(methodIndex));
+    }
+
+    /**
+     *
+     * @param methodIndex
+     * @return
+     */
+    public List<ItemResult> executeByInput(int methodIndex) {
+        return executeByInput(mMethods.get(methodIndex));
     }
 
     /**
@@ -108,10 +126,10 @@ public class ClassHelper {
      * @param methodName
      * @return
      */
-    public List<ItemResult> execute(String methodName) {
+    public List<ItemResult> executeByCsv(String methodName) {
         for (Method method : mMethods) {
             if (method.getName().equals(methodName)) {
-                return execute(method);
+                return executeByCsv(method);
             }
         }
         return null;
@@ -119,13 +137,38 @@ public class ClassHelper {
 
     /**
      *
+     * @param methodName
+     * @return
+     */
+    public List<ItemResult> executeByInput(String methodName) {
+        for (Method method : mMethods) {
+            if (method.getName().equals(methodName)) {
+                return executeByInput(method);
+            }
+        }
+        return null;
+    }
+
+    public List<ItemResult> executeByInput(Method method) {
+        // get input
+        Object[][] input = FileUtils.readInput(systemInput, getParamAndReturnCls(method));
+        return execute(method, input);
+    }
+
+    public List<ItemResult> executeByCsv(Method method) {
+        // get input
+        Object[][] input = FileUtils.readCsv(csvFilename, getParamAndReturnCls(method));
+        return execute(method, input);
+    }
+
+    /**
+     *
      * @param method
      * @return
      */
-    private List<ItemResult> execute(Method method) {
+    private List<ItemResult> execute(Method method, Object[][] input) {
         List<ItemResult> itemResults = new ArrayList<ItemResult>();
-        // get input
-        Object[][] input = FileUtils.readCsv(csvFilename, getParamAndReturnCls(method));
+
         try {
             // get method
             Object obj = cls.newInstance();

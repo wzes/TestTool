@@ -12,12 +12,41 @@ import java.util.List;
  */
 public class FileUtils {
 
+    /**
+     * read data from csv file
+     * @param filename
+     * @param paramCls
+     * @return
+     */
     public static Object[][] readCsv(String filename, Class<?>[] paramCls) {
 
-        List<TestData> testData = getTestData(filename, paramCls);
+        List<TestData> testData = getTestDataFromFile(filename, paramCls);
         int legalCount = getLegalCount(testData);
-        Object[][] data = new Object[legalCount][paramCls.length];
+        return getDataObjects(testData, legalCount, paramCls);
+    }
 
+    /**
+     * read data from system input
+     * @param input
+     * @param paramCls
+     * @return
+     */
+    public static Object[][] readInput(String input, Class<?>[] paramCls) {
+        List<TestData> testData = getTestDataFromInput(input, paramCls);
+        int legalCount = getLegalCount(testData);
+        return getDataObjects(testData, legalCount, paramCls);
+
+    }
+
+    /**
+     *
+     * @param testData
+     * @param legalCount
+     * @param paramCls
+     * @return
+     */
+    private static Object[][] getDataObjects(List<TestData> testData, int legalCount, Class<?>[] paramCls) {
+        Object[][] data = new Object[legalCount][paramCls.length];
         int row = 0;
         for (TestData td : testData) {
             if (td.isLegal()) {
@@ -47,7 +76,70 @@ public class FileUtils {
         return data;
     }
 
-    public static List<TestData> getTestData(String filename, Class<?>[] paramCls) {
+    /**
+     *
+     * @param input
+     * @param paramCls
+     * @return
+     */
+    public static List<TestData> getTestDataFromInput(String input, Class<?>[] paramCls) {
+        List<TestData> testDatas = new ArrayList<TestData>();
+        String[] lines = input.split("\n");
+        for (String line : lines) {
+            TestData testData = getTestDataFromLine(paramCls, line);
+            testDatas.add(testData);
+        }
+        return testDatas;
+    }
+
+    /**
+     *
+     * @param paramCls
+     * @param line
+     * @return
+     */
+    private static TestData getTestDataFromLine(Class<?>[] paramCls, String line) {
+        TestData testData = new TestData();
+        testData.setLine(line);
+        if (!line.isEmpty()) {
+            String[] params = line.split(",");
+            for (int i = 0; i < paramCls.length; i++) {
+                if (params.length != paramCls.length) {
+                    testData.setLegal(false);
+                    break;
+                }
+                try {
+                    if (paramCls[i] == int.class) {
+                        Integer.parseInt(params[i]);
+                    } else if (paramCls[i] == Integer.class) {
+                        Integer.valueOf(params[i]);
+                    } else if (paramCls[i] == String.class) {
+                        String.valueOf(params[i]);
+                    } else if (paramCls[i] == double.class) {
+                        Double.parseDouble(params[i]);
+                    } else if (paramCls[i] == Double.class) {
+                        Double.valueOf(params[i]);
+                    } else {
+                        testData.setLegal(false);
+                    }
+                } catch (NumberFormatException e) {
+                    testData.setLegal(false);
+                }
+                testData.setLegal(true);
+            }
+        } else {
+            testData.setLegal(false);
+        }
+        return testData;
+    }
+
+    /**
+     *
+     * @param filename
+     * @param paramCls
+     * @return
+     */
+    public static List<TestData> getTestDataFromFile(String filename, Class<?>[] paramCls) {
 
         List<TestData> testDatas = new ArrayList<TestData>();
 
@@ -56,37 +148,7 @@ public class FileUtils {
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                TestData testData = new TestData();
-                testData.setLine(line);
-                if (!line.isEmpty()) {
-                    String[] params = line.split(",");
-                    for (int i = 0; i < paramCls.length; i++) {
-                        if (params.length != paramCls.length) {
-                            testData.setLegal(false);
-                            break;
-                        }
-                        try {
-                            if (paramCls[i] == int.class) {
-                                Integer.parseInt(params[i]);
-                            } else if (paramCls[i] == Integer.class) {
-                                Integer.valueOf(params[i]);
-                            } else if (paramCls[i] == String.class) {
-                                String.valueOf(params[i]);
-                            } else if (paramCls[i] == double.class) {
-                                Double.parseDouble(params[i]);
-                            } else if (paramCls[i] == Double.class) {
-                                Double.valueOf(params[i]);
-                            } else {
-                                testData.setLegal(false);
-                            }
-                        } catch (NumberFormatException e) {
-                            testData.setLegal(false);
-                        }
-                        testData.setLegal(true);
-                    }
-                } else {
-                    testData.setLegal(false);
-                }
+                TestData testData = getTestDataFromLine(paramCls, line);
                 testDatas.add(testData);
             }
         } catch (FileNotFoundException e) {
@@ -97,6 +159,11 @@ public class FileUtils {
         return testDatas;
     }
 
+    /**
+     *
+     * @param testData
+     * @return
+     */
     private static int getLegalCount(List<TestData> testData) {
         int count = 0;
         for (TestData testData1 : testData) {
