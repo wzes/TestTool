@@ -24,10 +24,14 @@ public class TestView extends JFrame {
         this.setTitle("Test Util");
         this.setLayout(null);
 
+        JPanel panel = new JPanel();
+        panel.setSize(800,500);
+        this.add(panel);
+
         JTextField classFileField = new JTextField(20);
         classFileField.setBounds(20,20,165,30);
         classFileField.setToolTipText("please select .java file");
-        this.add(classFileField);
+        panel.add(classFileField);
 
         // select class
 
@@ -52,7 +56,7 @@ public class TestView extends JFrame {
 
                 // error
                 JComboBox comboBox = new JComboBox(getMethods());
-                getRootPane().add(comboBox);
+                panel.add(comboBox);
 
                 comboBox.addItemListener(new ItemListener() {
                     @Override
@@ -67,13 +71,13 @@ public class TestView extends JFrame {
             }
         });
 
-        this.add(classSelectButton);
+        panel.add(classSelectButton);
 
         // data select
         JTextField dataFileField = new JTextField(20);
         dataFileField.setBounds(20,80,165,30);
         dataFileField.setToolTipText("please select .csv file");
-        this.add(dataFileField);
+        panel.add(dataFileField);
 
         JButton dataSelectButton = new JButton("选择");
         dataSelectButton.setBounds(200, 80, 80, 30);
@@ -98,7 +102,7 @@ public class TestView extends JFrame {
                 setSize(800, 600);
             }
         });
-        this.add(dataSelectButton);
+        panel.add(dataSelectButton);
 
         JList<String> result = new JList<>();
 
