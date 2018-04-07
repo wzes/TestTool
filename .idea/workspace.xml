@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e49f428-d049-431f-90f7-7cc242ae08fb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -73,23 +69,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestView.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+            <state relative-caret-position="89">
+              <caret line="114" column="33" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6734#6735#0" expanded="true" />
-                <element signature="e#6786#6787#0" expanded="true" />
-                <element signature="e#7444#7445#0" expanded="true" />
-                <element signature="e#7494#7495#0" expanded="true" />
+                <element signature="e#5837#5838#0" expanded="true" />
+                <element signature="e#5889#5890#0" expanded="true" />
+                <element signature="e#6547#6548#0" expanded="true" />
+                <element signature="e#6597#6598#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -209,8 +205,8 @@
         <option value="$PROJECT_DIR$/src/test/java/CompilerTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/StatisticUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/util/FileUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" />
       </list>
     </option>
   </component>
@@ -598,7 +594,7 @@
       <workItem from="1522563212576" duration="5648000" />
       <workItem from="1522637699180" duration="40000" />
       <workItem from="1522682870435" duration="696000" />
-      <workItem from="1523077286735" duration="25253000" />
+      <workItem from="1523077286735" duration="26509000" />
     </task>
     <servers />
   </component>
@@ -635,7 +631,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31775000" />
+    <option name="totallyTimeSpent" value="33031000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -660,7 +656,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07486631" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2521834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2521834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15283842" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1132,20 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6734#6735#0" expanded="true" />
-            <element signature="e#6786#6787#0" expanded="true" />
-            <element signature="e#7444#7445#0" expanded="true" />
-            <element signature="e#7494#7495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -1186,6 +1168,20 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2812#2822#0" expanded="true" />
             <element signature="e#5249#5259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="114" column="33" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5837#5838#0" expanded="true" />
+            <element signature="e#5889#5890#0" expanded="true" />
+            <element signature="e#6547#6548#0" expanded="true" />
+            <element signature="e#6597#6598#0" expanded="true" />
           </folding>
         </state>
       </provider>

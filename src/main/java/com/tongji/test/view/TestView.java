@@ -3,15 +3,10 @@ package com.tongji.test.view;
 import com.tongji.test.ClassHelper;
 import com.tongji.test.model.ItemResult;
 import com.tongji.test.model.TotalResult;
-import com.tongji.test.util.FileUtils;
 import com.tongji.test.util.JavaCompilerUtils;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicBorders;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.List;
 
 /**
@@ -112,7 +107,7 @@ public class TestView extends JFrame {
 
         JTextArea textArea = new JTextArea();
         textArea.setBorder(BorderFactory.createEtchedBorder());
-        textArea.setBounds(320, 50, 660, 400);
+        textArea.setBounds(320, 70, 660, 400);
 
         panel.add(textArea);
 
