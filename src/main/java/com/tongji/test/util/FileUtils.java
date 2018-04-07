@@ -54,15 +54,15 @@ public class FileUtils {
                 for (int i = 0; i < paramCls.length; i++) {
                     try {
                         if (paramCls[i] == int.class) {
-                            data[row][i] = Integer.parseInt(params[i]);
+                            data[row][i] = Integer.parseInt(params[i].trim());
                         } else if (paramCls[i] == Integer.class) {
-                            data[row][i] = Integer.valueOf(params[i]);
+                            data[row][i] = Integer.valueOf(params[i].trim());
                         } else if (paramCls[i] == String.class) {
-                            data[row][i] = String.valueOf(params[i]);
+                            data[row][i] = String.valueOf(params[i].trim());
                         } else if (paramCls[i] == double.class) {
-                            data[row][i] = Double.parseDouble(params[i]);
+                            data[row][i] = Double.parseDouble(params[i].trim());
                         } else if (paramCls[i] == Double.class) {
-                            data[row][i] = Double.valueOf(params[i]);
+                            data[row][i] = Double.valueOf(params[i].trim());
                         } else {
                             throw new IllegalArgumentException("exist error parameter type");
                         }
