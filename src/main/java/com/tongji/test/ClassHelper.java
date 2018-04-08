@@ -1,5 +1,6 @@
 package com.tongji.test;
 
+import com.tongji.test.model.DataQuality;
 import com.tongji.test.model.ItemResult;
 import com.tongji.test.model.TotalResult;
 import com.tongji.test.util.FileUtils;
@@ -210,6 +211,11 @@ public class ClassHelper {
      */
     public String getDataText(int methodIndex) {
         return FileUtils.getText(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex)));
+    }
+
+    public DataQuality dataEvaluate(int methodIndex) {
+        return new DataQuality(FileUtils.getTestDataFromFile(csvFilename,
+                getParamAndReturnCls(mMethods.get(methodIndex))));
     }
 
     /**

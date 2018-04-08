@@ -139,7 +139,8 @@ public class TestView extends JFrame {
             isReadFile = true;
             setData(filePath);
             dataFileField.setText(jfc.getSelectedFile().getName());
-            dataArea.setText(classHelper.getDataText(methodIndex));
+            dataArea.setText(classHelper.getDataText(methodIndex) + "\n\nData Legal rate: " +
+            classHelper.dataEvaluate(methodIndex).getLegalRate() * 100 + " %");
         });
         panel.add(dataSelectButton);
 
