@@ -8,8 +8,8 @@ public class CashierSystem {
 
 
     public int calculate(int x, int y, int z) {
-        int value =  x * 25 + y * 35 + z * 40;
-        if(value < 1000) {
+        int value =  x * 25 + y * 30 + z * 45;
+        if(value <= 1000) {
             return value / 10;
         }
         else if (value > 1000 && value <= 1800) {

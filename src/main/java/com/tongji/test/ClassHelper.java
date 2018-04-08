@@ -184,9 +184,13 @@ public class ClassHelper {
                 // log
                 ItemResult item = new ItemResult();
                 StringBuilder sb = new StringBuilder();
-                for (Object o : input[row]) {
-                    sb.append(String.valueOf(o)).append(" ");
+                for (int i = 0; i < col; i++) {
+                    sb.append(String.valueOf(input[row][i])).append(" ");
                 }
+//                for (Object o : input[row]) {
+//                    sb.append(String.valueOf(o)).append(" ");
+//                }
+
                 item.setInput(sb.toString().substring(0, sb.toString().length() -1));
                 item.setActual(actual);
                 item.setExpected(input[row][col]);
