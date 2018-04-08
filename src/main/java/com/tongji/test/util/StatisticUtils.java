@@ -31,7 +31,7 @@ public class StatisticUtils {
             }
         }
         result.setCorrectCount(correctCount);
-        result.setItemCount(correctCount);
+        result.setItemCount(itemResults.size());
         result.setWrongCount(itemResults.size() - correctCount);
         result.setCorrectRate((double) correctCount / itemResults.size());
         return result;

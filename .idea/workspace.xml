@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e49f428-d049-431f-90f7-7cc242ae08fb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/ClassHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" afterPath="$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java" />
-    </list>
+    <list default="true" id="9e49f428-d049-431f-90f7-7cc242ae08fb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -109,8 +105,8 @@
       <file leaf-file-name="TestView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="141" column="78" lean-forward="false" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
+            <state relative-caret-position="1616">
+              <caret line="144" column="9" lean-forward="false" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7177#7178#0" expanded="true" />
@@ -613,7 +609,7 @@
       <workItem from="1522682870435" duration="696000" />
       <workItem from="1523077286735" duration="26584000" />
       <workItem from="1523114633522" duration="4907000" />
-      <workItem from="1523160159454" duration="733000" />
+      <workItem from="1523160159454" duration="935000" />
     </task>
     <servers />
   </component>
@@ -650,7 +646,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38746000" />
+    <option name="totallyTimeSpent" value="38948000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1109,8 +1105,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tongji/test/view/TestView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="141" column="78" lean-forward="false" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
+        <state relative-caret-position="1616">
+          <caret line="144" column="9" lean-forward="false" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7177#7178#0" expanded="true" />
