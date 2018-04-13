@@ -34,7 +34,7 @@ public class TestView extends JFrame {
 
 
     public TestView() {
-        this.setTitle("Test Util");
+        this.setTitle("Test Tool");
         this.setLayout(null);
 
         JPanel panel = new JPanel();
@@ -76,7 +76,9 @@ public class TestView extends JFrame {
             public void changedUpdate(DocumentEvent e) {
             }
         });
-        panel.add(dataArea);
+        JScrollPane jScrollPane = new JScrollPane(dataArea);
+        jScrollPane.setBounds(20, 200, 280, 250);
+        panel.add(jScrollPane);
 
         JComboBox comboBox = new JComboBox();
         comboBox.setBounds(20, 80, 280, 30);
@@ -98,7 +100,12 @@ public class TestView extends JFrame {
             String filePath = jfc.getSelectedFile().getAbsolutePath();
 
             if (!filePath.contains(".java")) {
-                System.out.println("file type error");
+                JOptionPane.showMessageDialog(
+                        panel,
+                        "File Type Error, Please input .java File",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
                 return;
             }
             classFileField.setText(jfc.getSelectedFile().getName());
@@ -132,14 +139,19 @@ public class TestView extends JFrame {
             String filePath = jfc.getSelectedFile().getAbsolutePath();
 
             if (!filePath.contains(".csv")) {
-                System.out.println("file type error");
+                JOptionPane.showMessageDialog(
+                        panel,
+                        "File Type Error, Please input .csv or .txt File",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
                 return;
             }
             isSelected = false;
             isReadFile = true;
             setData(filePath);
             dataFileField.setText(jfc.getSelectedFile().getName());
-            dataArea.setText(classHelper.getDataText(methodIndex) + "\n\nData Legal rate: " +
+            dataArea.setText(classHelper.getDataText(methodIndex) + "\nData Legal rate: " +
             classHelper.dataEvaluate(methodIndex).getLegalRate() * 100 + " %");
         });
         panel.add(dataSelectButton);

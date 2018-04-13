@@ -62,7 +62,7 @@ public class JavaCompilerUtils {
         return null;
     }
 
-    public static String getClassName (String sourceFileInputPath) {
+    public static String getClassName(String sourceFileInputPath) {
         String packageName = getPackageName(sourceFileInputPath);
         int index = sourceFileInputPath.lastIndexOf("/");
         if (index != -1) {
