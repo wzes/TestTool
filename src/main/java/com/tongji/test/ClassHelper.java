@@ -217,6 +217,15 @@ public class ClassHelper {
         return FileUtils.getText(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex)));
     }
 
+    /**
+     *
+     * @param methodIndex
+     * @return
+     */
+    public String[][] getTableText(int methodIndex) {
+        return FileUtils.getTableText(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex)));
+    }
+
     public DataQuality dataEvaluate(int methodIndex) {
         return new DataQuality(FileUtils.getTestDataFromFile(csvFilename,
                 getParamAndReturnCls(mMethods.get(methodIndex))));

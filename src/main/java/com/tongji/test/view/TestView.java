@@ -9,6 +9,8 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
@@ -18,6 +20,7 @@ import java.awt.event.ItemEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyVetoException;
 import java.beans.VetoableChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -151,12 +154,14 @@ public class TestView extends JFrame {
             isReadFile = true;
             setData(filePath);
             dataFileField.setText(jfc.getSelectedFile().getName());
+            String[][] tableText = classHelper.getTableText(methodIndex);
+
             dataArea.setText(classHelper.getDataText(methodIndex) + "\nData Legal rate: " +
             classHelper.dataEvaluate(methodIndex).getLegalRate() * 100 + " %");
         });
         panel.add(dataSelectButton);
 
-//
+        //
         JTextArea textArea = new JTextArea();
         textArea.setFont(new Font(null, 0, 18));
         textArea.setBorder(BorderFactory.createEtchedBorder());
@@ -195,7 +200,7 @@ public class TestView extends JFrame {
             double rate = evaluate.getCorrectRate() * 100;
 
             if (String.valueOf(rate).length() > 4) {
-                sb.append(String.valueOf(rate).substring(0,  5)).append("%");
+                sb.append(String.valueOf(rate), 0, 5).append("%");
             } else {
                 sb.append(String.valueOf(rate)).append("%");
             }
@@ -206,15 +211,18 @@ public class TestView extends JFrame {
 
             Object[][] data = new Object[itemResults.size()][4];
 
+            List<Integer> errorsIndex = new ArrayList<>();
             for (int i = 0; i < itemResults.size(); i++) {
                 data[i][0] = itemResults.get(i).getInput();
                 data[i][1] = itemResults.get(i).getActual();
                 data[i][2] = itemResults.get(i).getExpected();
                 data[i][3] = itemResults.get(i).isCorrect();
+                if (!itemResults.get(i).isCorrect()) {
+                    errorsIndex.add(i);
+                }
             }
 
-
-            table.setModel(new TableModel() {
+            TableModel tableModel =new TableModel() {
                 @Override
                 public int getRowCount() {
                     return data.length;
@@ -227,7 +235,7 @@ public class TestView extends JFrame {
 
                 @Override
                 public String getColumnName(int columnIndex) {
-                    return columnNames[columnIndex].toString();
+                    return columnNames[columnIndex];
                 }
 
                 @Override
@@ -259,7 +267,10 @@ public class TestView extends JFrame {
                 public void removeTableModelListener(TableModelListener l) {
 
                 }
-            });
+            };
+            table.setGridColor(Color.BLUE);
+            table.setModel(tableModel);
+            errorsIndex.forEach((integer -> setOneRowBackgroundColor(table, integer, Color.RED)));
             panel.updateUI();
         });
 
@@ -271,6 +282,39 @@ public class TestView extends JFrame {
         this.setVisible(true);
         this.setBounds(400, 300, 1000, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    /**
+     * 设置表格的某一行的背景色
+     * @param table
+     */
+    public static void setOneRowBackgroundColor(JTable table, int rowIndex,
+                                                Color color) {
+        try {
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer() {
+
+                @Override
+                public Component getTableCellRendererComponent(JTable table,
+                                                               Object value, boolean isSelected, boolean hasFocus,
+                                                               int row, int column) {
+                    if (row == rowIndex) {
+                        setBackground(color);
+                        setForeground(Color.WHITE);
+                    } else {
+                        setBackground(Color.lightGray);
+                        setForeground(Color.WHITE);
+                    }
+                    return super.getTableCellRendererComponent(table, value,
+                            isSelected, hasFocus, row, column);
+                }
+            };
+            int columnCount = table.getColumnCount();
+            for (int i = 0; i < columnCount; i++) {
+                table.getColumn(table.getColumnName(i)).setCellRenderer(tcr);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

@@ -36,5 +36,4 @@ public class DataQuality {
         legalRate = (double) illegal / count;
         return legalRate;
     }
-
 }

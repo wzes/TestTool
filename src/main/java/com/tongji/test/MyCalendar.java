@@ -17,8 +17,8 @@ public class MyCalendar {
             e.printStackTrace();
         }
         c.setTime(date);
-        int day=c.get(Calendar.DATE);
-        c.set(Calendar.DATE,day-1);
+        int day = c.get(Calendar.DATE);
+        c.set(Calendar.DATE, day - 1);
 
         return new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
     }
@@ -33,7 +33,7 @@ public class MyCalendar {
         }
         c.setTime(date);
         int day=c.get(Calendar.DATE);
-        c.set(Calendar.DATE,day+1);
+        c.set(Calendar.DATE, day + 1);
 
         return new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
     }
@@ -57,13 +57,14 @@ public class MyCalendar {
 
     public static int getDayOfMonth(int year,int month){
         Calendar c = Calendar.getInstance();
-        c.set(year, month, 0); //输入类型为int类型
+        /* 输入类型为int类型 */
+        c.set(year, month, 0);
         return c.get(Calendar.DAY_OF_MONTH);
     }
 
     public static boolean isRun(int year) {
         boolean isRn = false;
-        isRn = ((year % 4 == 0) && !(year % 100 == 0) || year % 400 == 0);
+        isRn = ((year % 4 == 0) && year % 100 != 0 || year % 400 == 0);
         return isRn;
     }
 
