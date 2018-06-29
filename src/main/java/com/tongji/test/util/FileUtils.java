@@ -104,7 +104,9 @@ public class FileUtils {
         if (!line.isEmpty()) {
             String[] params = line.split("," +
                     "");
+            Object[] types = new Object[paramCls.length];
             testData.setData(params);
+            testData.setTypes(types);
             for (int i = 0; i < paramCls.length; i++) {
                 if (params.length != paramCls.length) {
                     testData.setLegal(false);
@@ -113,14 +115,19 @@ public class FileUtils {
                 try {
                     if (paramCls[i] == int.class) {
                         Integer.parseInt(params[i]);
+                        types[i] = Integer.class;
                     } else if (paramCls[i] == Integer.class) {
                         Integer.valueOf(params[i]);
+                        types[i] = Integer.class;
                     } else if (paramCls[i] == String.class) {
                         String.valueOf(params[i]);
+                        types[i] = String.class;
                     } else if (paramCls[i] == double.class) {
                         Double.parseDouble(params[i]);
+                        types[i] = double.class;
                     } else if (paramCls[i] == Double.class) {
                         Double.valueOf(params[i]);
+                        types[i] = Double.class;
                     } else {
                         testData.setLegal(false);
                     }
@@ -147,6 +154,27 @@ public class FileUtils {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param filename
+     * @param paramCls
+     * @return
+     */
+    public static Object[] getTableTextTypes(String filename, Class<?>[] paramCls) {
+        List<TestData> testDataFromFile = getTestDataFromFile(filename, paramCls);
+        int column = 0;
+        if (testDataFromFile != null && testDataFromFile.size() > 0) {
+            column = testDataFromFile.get(0).getData().length;
+        }
+        Object[] types = new Object[column];
+        assert testDataFromFile != null;
+        for (int i = 0; i < column; i++) {
+            types[i] = testDataFromFile.get(0).getTypes()[i];
+        }
+        return types;
+    }
+
+
     public static String[][] getTableText(String filename, Class<?>[] paramCls) {
         List<TestData> testDataFromFile = getTestDataFromFile(filename, paramCls);
         int column = 0, row = 0;
@@ -154,8 +182,8 @@ public class FileUtils {
             column = testDataFromFile.get(0).getData().length;
             row = testDataFromFile.size();
         }
-        System.out.println(column + " " + row);
         String[][] data = new String[row][];
+        Object[] types = new Object[column];
         assert testDataFromFile != null;
         for (int i = 0; i < testDataFromFile.size(); i++) {
             data[i] = new String[column + 1];

@@ -10,6 +10,16 @@ public class TestData {
     private boolean legal;
     private String[] data;
 
+    public Object[] getTypes() {
+        return types;
+    }
+
+    public void setTypes(Object[] types) {
+        this.types = types;
+    }
+
+    private Object[] types;
+
     public String[] getData() {
         return data;
     }

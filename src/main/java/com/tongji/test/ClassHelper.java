@@ -5,6 +5,7 @@ import com.tongji.test.model.ItemResult;
 import com.tongji.test.model.TotalResult;
 import com.tongji.test.util.FileUtils;
 import com.tongji.test.util.StatisticUtils;
+import javafx.beans.binding.ObjectExpression;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,6 +26,17 @@ public class ClassHelper {
 
     private String csvFilename;
     private String systemInput;
+
+    private String[][] tableText;
+    private Object[] types;
+
+    public Object[] getTypes() {
+        return types;
+    }
+
+    public void setTypes(Object[] types) {
+        this.types = types;
+    }
 
     public String getSystemInput() {
         return systemInput;
@@ -118,6 +130,15 @@ public class ClassHelper {
      * @param methodIndex
      * @return
      */
+    public List<ItemResult> executeByTableText(int methodIndex) {
+        return executeByTableText(mMethods.get(methodIndex));
+    }
+
+    /**
+     *
+     * @param methodIndex
+     * @return
+     */
     public List<ItemResult> executeByInput(int methodIndex) {
         return executeByInput(mMethods.get(methodIndex));
     }
@@ -156,6 +177,32 @@ public class ClassHelper {
         return execute(method, input);
     }
 
+    public List<ItemResult> executeByTableText(Method method) {
+        Object[][] data = new Object[tableText.length][];
+        // change the type for input data
+        for (int i = 0; i < tableText.length; i++) {
+            data[i] = new Object[tableText[i].length];
+            for (int j = 0; j < tableText[0].length; j++) {
+                try {
+                    if (types[j] == int.class) {
+                        data[i][j] = Integer.parseInt(tableText[i][j]);
+                    } else if (types[j] == Integer.class) {
+                        data[i][j] = Integer.valueOf(tableText[i][j]);
+                    } else if (types[j] == String.class) {
+                        data[i][j] = String.valueOf(tableText[i][j]);
+                    } else if (types[j] == double.class) {
+                        data[i][j] = Double.parseDouble(tableText[i][j]);
+                    } else if (types[j] == Double.class) {
+                        data[i][j] = Double.valueOf(tableText[i][j]);
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return execute(method, data);
+    }
+
     public List<ItemResult> executeByCsv(Method method) {
         // get input
         Object[][] input = FileUtils.readCsv(csvFilename, getParamAndReturnCls(method));
@@ -187,9 +234,6 @@ public class ClassHelper {
                 for (int i = 0; i < col; i++) {
                     sb.append(String.valueOf(input[row][i])).append(" ");
                 }
-//                for (Object o : input[row]) {
-//                    sb.append(String.valueOf(o)).append(" ");
-//                }
 
                 item.setInput(sb.toString().substring(0, sb.toString().length() -1));
                 item.setActual(actual);
@@ -223,6 +267,7 @@ public class ClassHelper {
      * @return
      */
     public String[][] getTableText(int methodIndex) {
+        this.setTypes(FileUtils.getTableTextTypes(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex))));
         return FileUtils.getTableText(csvFilename, getParamAndReturnCls(mMethods.get(methodIndex)));
     }
 
@@ -264,5 +309,13 @@ public class ClassHelper {
 
     public Class<?>[] getParamAndReturnCls(Method method) {
         return getParams(method);
+    }
+
+    public String[][] getTableText() {
+        return tableText;
+    }
+
+    public void setTableText(String[][] tableText) {
+        this.tableText = tableText;
     }
 }
