@@ -187,7 +187,11 @@ public class FileUtils {
         for (int i = 0; i < testDataFromFile.size(); i++) {
             data[i] = new String[column + 1];
             for (int j = 0; j < column; j++) {
-                data[i][j] = testDataFromFile.get(i).getData()[j];
+                if (j < testDataFromFile.get(i).getData().length) {
+                    data[i][j] = testDataFromFile.get(i).getData()[j];
+                } else {
+                    data[i][j] = null;
+                }
             }
             data[i][column] = testDataFromFile.get(i).isLegal() + "";
         }
