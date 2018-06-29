@@ -164,7 +164,8 @@ public class TestView extends JFrame {
         startButton = new JButton("start");
         startButton.setBounds(420, 20, 760, 30);
         startButton.addActionListener(e -> {
-            if (!checkNull(tableText)) {
+            updateError();
+            if (!checkNull(tableText) && !checkError(tableText)) {
                 updateShow();
             } else {
                 JOptionPane.showMessageDialog(
@@ -286,14 +287,6 @@ public class TestView extends JFrame {
             columnNames[i] = "M" + (i + 1);
         }
         columnNames[tableText[0].length - 1] = "isLegal";
-        List<Integer> errorsIndex = new ArrayList<>();
-        for (int i = 0; i < tableText.length; i++) {
-            if (tableText[i][tableText[0].length - 1] != null &&
-                    tableText[i][tableText[0].length - 1].contains("false")) {
-                errorsIndex.add(i);
-            }
-        }
-
         dataTableModel = new DefaultTableModel() {
 
             @Override
@@ -328,31 +321,41 @@ public class TestView extends JFrame {
 
             @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
-                try {
-                    return tableText[rowIndex][columnIndex];
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    return null;
-                }
+                return tableText[rowIndex][columnIndex];
             }
 
             @Override
             public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
                 tableText[rowIndex][columnIndex] = aValue.toString();
-                setOneRowBackgroundColor(dataTable, rowIndex, Color.WHITE);
+                classHelper.setTableText(tableText);
+                classHelper.updateTable();
+                tableText = classHelper.getTableText();
                 fireTableDataChanged();
+                updateError();
             }
         };
         dataTable.setModel(dataTableModel);
         dataTableModel.addTableModelListener(e1 -> {
             if (e1.getType() == TableModelEvent.UPDATE) {
                 classHelper.setTableText(getTableText(tableText));
-                if (!checkNull(tableText)) {
+                if (!checkNull(tableText) && !checkError(tableText)) {
                     updateShow();
                 }
             }
         });
-        errorsIndex.forEach((integer -> setOneRowBackgroundColor(dataTable, integer, Color.RED)));
+        updateError();
         panel.updateUI();
+    }
+
+    private void updateError() {
+        List<Integer> errorsIndex = new ArrayList<>();
+        for (int i = 0; i < tableText.length; i++) {
+            if (tableText[i][tableText[0].length - 1] != null &&
+                    tableText[i][tableText[0].length - 1].contains("false")) {
+                errorsIndex.add(i);
+            }
+        }
+        errorsIndex.forEach((integer -> setOneRowBackgroundColor(dataTable, integer, Color.RED)));
         dataArea.setText("Data Legal rate: " + (tableText.length - errorsIndex.size()) * 100 / tableText.length + " %");
     }
 
@@ -395,7 +398,6 @@ public class TestView extends JFrame {
                 errorsIndex.add(i);
             }
         }
-
         TableModel tableModel =new TableModel() {
             @Override
             public int getRowCount() {
@@ -444,7 +446,13 @@ public class TestView extends JFrame {
         };
         showTable.setGridColor(Color.BLUE);
         showTable.setModel(tableModel);
-        errorsIndex.forEach((integer -> setOneRowBackgroundColor(dataTable, integer, Color.RED)));
+        if (errorsIndex.size() == 0) {
+            for (int i = 0; i < tableText.length; i++) {
+                setOneRowBackgroundColor(dataTable, i, Color.white);
+            }
+        } else {
+            errorsIndex.forEach((integer -> setOneRowBackgroundColor(dataTable, integer, Color.RED)));
+        }
         errorsIndex.forEach((integer -> setOneRowBackgroundColor(showTable, integer, Color.RED)));
         panel.updateUI();
     }
@@ -459,5 +467,15 @@ public class TestView extends JFrame {
             }
         }
         return update;
+    }
+
+    private boolean checkError(String[][] tableText) {
+        boolean error = false;
+        for (int i = 0; i < tableText.length; i++) {
+            if (tableText[i][tableText[i].length - 1].contains("false")) {
+                error = true;
+            }
+        }
+        return error;
     }
 }

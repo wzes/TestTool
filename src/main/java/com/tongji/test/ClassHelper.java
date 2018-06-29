@@ -276,6 +276,37 @@ public class ClassHelper {
                 getParamAndReturnCls(mMethods.get(methodIndex))));
     }
 
+    public void updateTable() {
+        for (int i = 0; i < tableText.length; i++) {
+            for (int j = 0; j < types.length; j++) {
+                if (tableText[i].length - 1 != types.length) {
+                    tableText[i][tableText[i].length - 1] = "false";
+                    break;
+                }
+                try {
+                    if (types[j] == int.class) {
+                        Integer.parseInt(tableText[i][j]);
+                    } else if (types[j] == Integer.class) {
+                        Integer.valueOf(tableText[i][j]);
+                    } else if (types[j] == String.class) {
+                        String.valueOf(tableText[i][j]);
+                    } else if (types[j] == double.class) {
+                        Double.parseDouble(tableText[i][j]);
+                    } else if (types[j] == Double.class) {
+                        Double.valueOf(tableText[i][j]);
+                    } else {
+                        tableText[i][tableText[i].length - 1] = "false";
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    tableText[i][tableText[i].length - 1] = "false";
+                    break;
+                }
+                tableText[i][tableText[i].length - 1] = "true";
+            }
+        }
+    }
+
     /**
      *
      * @param itemResults

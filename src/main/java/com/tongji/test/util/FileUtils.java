@@ -183,7 +183,6 @@ public class FileUtils {
             row = testDataFromFile.size();
         }
         String[][] data = new String[row][];
-        Object[] types = new Object[column];
         assert testDataFromFile != null;
         for (int i = 0; i < testDataFromFile.size(); i++) {
             data[i] = new String[column + 1];
