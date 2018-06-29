@@ -452,7 +452,6 @@ public class TestView extends JFrame {
     private boolean checkNull(String[][] tableText) {
         boolean update = false;
         for (int i = 0; i < tableText.length; i++) {
-            tableText[i] = new String[tableText[0].length - 1];
             for (int j = 0; j < tableText[0].length - 1; j++) {
                 if (tableText[i][j] == null) {
                     update = true;
