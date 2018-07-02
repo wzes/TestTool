@@ -4,6 +4,12 @@ import com.tongji.test.ClassHelper;
 import com.tongji.test.model.ItemResult;
 import com.tongji.test.model.TotalResult;
 import com.tongji.test.util.JavaCompilerUtils;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -12,7 +18,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ItemEvent;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -40,6 +49,7 @@ public class TestView extends JFrame {
     private String[] columnNames = { "Input Data", "Actual", "Expected", "Is Pass" };
     private String[][] tableText;
     private TableModel dataTableModel;
+    private PieChart pieChart;
     public TestView() {
         this.setTitle("Test Tool");
         this.setLayout(null);
@@ -155,10 +165,14 @@ public class TestView extends JFrame {
 
         panel.add(textArea);
 
+        pieChart = new PieChart(null);
+        pieChart.frame1.setBounds(415, 500, 765, 105);
+        panel.add(pieChart.getChartPanel());
+
         String[] columnNames = { "Input Data", "Actual", "Expected", "Is Pass" };
         showTable = new JTable(new Object[0][0], columnNames);
         JScrollPane scrollPane = new JScrollPane(showTable);
-        scrollPane.setBounds(420, 70, 760, 530);
+        scrollPane.setBounds(420, 70, 760, 430);
         panel.add(scrollPane);
 
         startButton = new JButton("start");
@@ -221,7 +235,7 @@ public class TestView extends JFrame {
                         setForeground(Color.BLACK);
                     }
                     return super.getTableCellRendererComponent(table, value,
-                            isSelected, hasFocus, row, column);
+                            isSelected, false, row, column);
                 }
             };
             int columnCount = table.getColumnCount();
@@ -241,7 +255,7 @@ public class TestView extends JFrame {
         this.className = JavaCompilerUtils.getClassName(filePath);
         String packageName = JavaCompilerUtils.getPackageName(filePath);
         JavaCompilerUtils.CompilerJavaFile(filePath,
-                "target/classes/" + packageName);
+                "target/classes/");
 
         classHelper = new ClassHelper(className);
     }
@@ -383,7 +397,15 @@ public class TestView extends JFrame {
         } else {
             sb.append(String.valueOf(rate)).append("%");
         }
+        HashMap<String, Integer> dataset = new HashMap<>();
+        dataset.put("Correct", evaluate.getCorrectCount());
+        dataset.put("Fail", evaluate.getWrongCount());
 
+        // update
+        pieChart.setDataset(dataset);
+        pieChart.getChartPanel().updateUI();
+
+        panel.add(pieChart.getChartPanel());
         textArea.setText(sb.toString());
         textArea.updateUI();
         Object[][] data = new Object[itemResults.size()][4];
@@ -455,6 +477,15 @@ public class TestView extends JFrame {
         }
         errorsIndex.forEach((integer -> setOneRowBackgroundColor(showTable, integer, Color.RED)));
         panel.updateUI();
+
+        if (evaluate.getWrongCount() != 0) {
+            JOptionPane.showMessageDialog(
+                    panel,
+                    "Exist error samples",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
 
     private boolean checkNull(String[][] tableText) {
@@ -478,4 +509,65 @@ public class TestView extends JFrame {
         }
         return error;
     }
+
+    class PieChart {
+        ChartPanel frame1;
+        DefaultPieDataset dataset;
+        JFreeChart chart;
+        PiePlot pieplot;
+        PieChart(HashMap<String, Integer> data) {
+            dataset = new DefaultPieDataset();
+            if (data != null) {
+                data.forEach((key, value) -> dataset.setValue(key, value));
+            }
+            chart = ChartFactory.createPieChart3D("测试结果",
+                    dataset,true,false,false);
+            pieplot = (PiePlot) chart.getPlot();
+            DecimalFormat df = new DecimalFormat("0.00%");
+            NumberFormat nf = NumberFormat.getNumberInstance();
+            StandardPieSectionLabelGenerator sp1 = new StandardPieSectionLabelGenerator("{0}  {2}", nf, df);
+            pieplot.setLabelGenerator(sp1);
+
+            pieplot.setNoDataMessage("无数据显示");
+            pieplot.setCircular(false);
+            pieplot.setLabelGap(0.02D);
+
+            pieplot.setIgnoreNullValues(true);
+            pieplot.setIgnoreZeroValues(true);
+            frame1 = new ChartPanel(chart,true);
+            chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
+            PiePlot piePlot= (PiePlot) chart.getPlot();
+            piePlot.setLabelFont(new Font("宋体",Font.BOLD,10));
+            chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,10));
+        }
+
+        ChartPanel getChartPanel(){
+            return frame1;
+        }
+
+        void setDataset(HashMap<String, Integer> data) {
+            this.dataset = new DefaultPieDataset();
+            data.forEach((key, value) -> dataset.setValue(key, value));
+            chart = ChartFactory.createPieChart3D("测试结果",
+                    dataset,true,false,false);
+            pieplot = (PiePlot) chart.getPlot();
+            DecimalFormat df = new DecimalFormat("0.00%");
+            NumberFormat nf = NumberFormat.getNumberInstance();
+            StandardPieSectionLabelGenerator sp1 = new StandardPieSectionLabelGenerator("{0}  {2}", nf, df);
+            pieplot.setLabelGenerator(sp1);
+
+            pieplot.setNoDataMessage("无数据显示");
+            pieplot.setCircular(false);
+            pieplot.setLabelGap(0.02D);
+
+            pieplot.setIgnoreNullValues(true);
+            pieplot.setIgnoreZeroValues(true);
+            frame1.setChart(chart);
+            chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
+            PiePlot piePlot= (PiePlot) chart.getPlot();
+            piePlot.setLabelFont(new Font("宋体",Font.BOLD,10));
+            chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,10));
+        }
+    }
+
 }
